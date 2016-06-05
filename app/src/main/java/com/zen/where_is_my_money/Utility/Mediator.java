@@ -12,8 +12,10 @@ import java.util.ArrayList;
 public class Mediator  {
 
     private static Mediator instance;
-    ArrayList<Purse> pool;
-    ArrayList<String> type_list ;
+    private ArrayList<Purse> pool;
+    private ArrayList<String> type_list ;
+    private Purse temp_purse;
+    private int hash_code;
 
 
     private Mediator(){
@@ -27,6 +29,22 @@ public class Mediator  {
         }
         return  instance;
 
+    }
+
+    public void storeHashCode(int h){
+        hash_code = h;
+    }
+
+    public int getHashCodeOfPurse(){
+        return  hash_code;
+    }
+
+    public void storePurse(Purse p){
+        temp_purse = p;
+    }
+
+    public  Purse getPurse(){
+        return temp_purse;
     }
 
     public void storeTemporaryData(ArrayList<Purse> e){

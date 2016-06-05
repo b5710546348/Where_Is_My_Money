@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Summary By Day"
+        android:text="Summary By Month"
         android:id="@+id/textView8"
         android:layout_below="@+id/catagories_summary_radioGroup"
         android:layout_alignParentStart="true"
@@ -51,61 +51,62 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Summary By Month"
+        android:text="Summary By Day"
         android:id="@+id/textView9"
-        android:layout_below="@+id/selected_date_text"
+        android:layout_above="@+id/select_date_button"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="134dp" />
+        android:layout_marginBottom="27dp" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/month_select_spinner"
-        android:layout_below="@+id/textView9"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/textView9"
-        android:spinnerMode="dropdown" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/selected_date_text"
+        android:spinnerMode="dropdown"
         android:layout_below="@+id/textView8"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp"
-        android:layout_alignEnd="@+id/textView9" />
+        android:layout_marginTop="27dp"
+        android:layout_alignEnd="@+id/textView8" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Date"
         android:id="@+id/select_date_button"
-        android:layout_marginStart="27dp"
-        android:layout_alignBottom="@+id/selected_date_text"
-        android:layout_toEndOf="@+id/textView9"
-        android:background="#f7df07" />
+        android:layout_marginStart="29dp"
+        android:background="#f7df07"
+        android:layout_above="@+id/by_date_summary_button"
+        android:layout_toEndOf="@+id/selected_date_text"
+        android:layout_marginBottom="48dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Summary"
         android:id="@+id/by_date_summary_button"
-        android:layout_below="@+id/selected_date_text"
+        android:background="#a9b632"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="55dp"
-        android:layout_alignEnd="@+id/catagories_summary_radioGroup"
-        android:background="#a9b632" />
+        android:layout_marginBottom="27dp"
+        android:layout_alignEnd="@+id/by_month_summary_button" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Summary"
         android:id="@+id/by_month_summary_button"
-        android:layout_marginTop="26dp"
+        android:background="#a9b632"
         android:layout_below="@+id/month_select_spinner"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/by_date_summary_button"
-        android:background="#a9b632" />
+        android:layout_marginTop="26dp"
+        android:layout_alignEnd="@+id/catagories_summary_radioGroup" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/selected_date_text"
+        android:layout_alignBottom="@+id/select_date_button"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/textView8" />
 
 </RelativeLayout>
