@@ -9,22 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.zen.where_is_my_money.Activities.EditActivity;
 import com.zen.where_is_my_money.Activities.EditDataActivity;
 import com.zen.where_is_my_money.Models.Purse;
 import com.zen.where_is_my_money.Models.Storage;
 import com.zen.where_is_my_money.R;
-import com.zen.where_is_my_money.Utility.Mediator;
-
-import org.w3c.dom.Text;
+import com.zen.where_is_my_money.Utility.Summary;
 
 import java.util.List;
-
-import static android.support.v4.app.ActivityCompat.startActivity;
 
 /**
  * Created by Zen on 6/5/16.
@@ -91,8 +84,8 @@ public class LogAdapter extends ArrayAdapter<Purse> {
         edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Mediator.getInstance().storePurse(p);
-                Mediator.getInstance().storeHashCode(hash_code);
+                //Summary.getInstance().storePurse(p);
+                Summary.getInstance().storeHashCode(hash_code);
 
                 Intent intent = new Intent(v.getContext() , EditDataActivity.class);
                 v.getContext().startActivity(intent);

@@ -9,9 +9,8 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.zen.where_is_my_money.Models.Purse;
 import com.zen.where_is_my_money.R;
-import com.zen.where_is_my_money.Utility.Mediator;
+import com.zen.where_is_my_money.Utility.Summary;
 
 import java.util.ArrayList;
 
@@ -35,9 +34,9 @@ public class GraphActivity extends AppCompatActivity {
         ArrayList<Entry> entries = new ArrayList<>();
 
 
-        for(int i = 0; i < Mediator.getInstance().getManagedList().size() ; i++){
-            entries.add(new Entry(Mediator.getInstance().getManagedList().get(i) , i));
-            total_amount += Mediator.getInstance().getManagedList().get(i);
+        for(int i = 0; i < Summary.getInstance().getManagedList().size() ; i++){
+            entries.add(new Entry(Summary.getInstance().getManagedList().get(i) , i));
+            total_amount += Summary.getInstance().getManagedList().get(i);
         }
 
         total_amount_text  = (TextView)findViewById(R.id.total_amount_text);
@@ -47,7 +46,7 @@ public class GraphActivity extends AppCompatActivity {
         PieDataSet dataset = new PieDataSet(entries, "amount(baht)");
 
         // creating labels x-axis
-        ArrayList<String> labels = Mediator.getInstance().getTypeDataList();
+        ArrayList<String> labels = Summary.getInstance().getTypeDataList();
 
 
 

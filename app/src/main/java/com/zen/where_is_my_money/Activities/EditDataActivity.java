@@ -6,13 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zen.where_is_my_money.Models.Purse;
 import com.zen.where_is_my_money.Models.Storage;
 import com.zen.where_is_my_money.R;
-import com.zen.where_is_my_money.Utility.Mediator;
+import com.zen.where_is_my_money.Utility.Summary;
 
 public class EditDataActivity extends AppCompatActivity {
 
@@ -40,7 +39,7 @@ public class EditDataActivity extends AppCompatActivity {
                     double new_value = Double.parseDouble(edit_value_text.getText().toString());
 
                     for(Purse p  : Storage.getInstance().getPurseList()){
-                        if(Mediator.getInstance().getHashCodeOfPurse() == p.hashCode()){
+                        if(Summary.getInstance().getHashCodeOfPurse() == p.hashCode()){
                             p.setValue(new_value);
                         }
                     }

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.zen.where_is_my_money.Models.Storage;
 import com.zen.where_is_my_money.R;
-import com.zen.where_is_my_money.Utility.Mediator;
+import com.zen.where_is_my_money.Utility.Summary;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -86,13 +86,13 @@ public class SummaryOptionActivity extends AppCompatActivity {
 
 
                     if(category.getText().toString().equals("Income")){
-                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Income", date));
+                        Summary.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Income", date));
 
                         Intent intent = new Intent(SummaryOptionActivity.this , GraphActivity.class);
                         startActivity(intent);
                     }
                     else if(category.getText().toString().equals("Expenses")){
-                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Expenses", date));
+                        Summary.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Expenses", date));
 
                         Intent intent = new Intent(SummaryOptionActivity.this , GraphActivity.class);
                         startActivity(intent);
@@ -118,15 +118,15 @@ public class SummaryOptionActivity extends AppCompatActivity {
                     String date = "2016/" + month_list.getSelectedItem().toString().substring(0,2);
 
                     if(category.getText().toString().equals("Income")){
-                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Income" , date));
-                        Mediator.getInstance().storeTypeData(Storage.getInstance().getIncomeTypeList());
+                        Summary.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Income" , date));
+                        Summary.getInstance().storeTypeData(Storage.getInstance().getIncomeTypeList());
 
                         Intent intent = new Intent(SummaryOptionActivity.this , GraphActivity.class);
                         startActivity(intent);
                     }
                     else if(category.getText().toString().equals("Expenses")){
-                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Expenses", date));
-                        Mediator.getInstance().storeTypeData(Storage.getInstance().getExpensesTypeList());
+                        Summary.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Expenses", date));
+                        Summary.getInstance().storeTypeData(Storage.getInstance().getExpensesTypeList());
 
                         Intent intent = new Intent(SummaryOptionActivity.this , GraphActivity.class);
                         startActivity(intent);

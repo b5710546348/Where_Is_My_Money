@@ -2,30 +2,29 @@ package com.zen.where_is_my_money.Utility;
 
 import com.zen.where_is_my_money.Models.Purse;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 /**
  * Created by Zen on 6/4/16.
  */
-public class Mediator  {
+public class Summary {
 
-    private static Mediator instance;
+    private static Summary instance;
     private ArrayList<Purse> pool;
     private ArrayList<String> type_list ;
     private Purse temp_purse;
     private int hash_code;
 
 
-    private Mediator(){
+    private Summary(){
         pool = new ArrayList<>();
         type_list = new ArrayList<>();
     }
 
-    public static  Mediator getInstance(){
+    public static Summary getInstance(){
         if(instance == null){
-            instance = new Mediator();
+            instance = new Summary();
         }
         return  instance;
 
