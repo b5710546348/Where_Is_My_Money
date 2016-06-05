@@ -13,13 +13,12 @@ public class Mediator  {
 
     private static Mediator instance;
     ArrayList<Purse> pool;
-    ArrayList<String> income_type_list ;
-    ArrayList<String> expenses_type_list;
+    ArrayList<String> type_list ;
+
 
     private Mediator(){
         pool = new ArrayList<>();
-        income_type_list = new ArrayList<String>();
-        expenses_type_list = new ArrayList<String>();
+        type_list = new ArrayList<>();
     }
 
     public static  Mediator getInstance(){
@@ -34,25 +33,42 @@ public class Mediator  {
         pool = e;
     }
 
-    public void obtainIncomeTypeData(ArrayList<String> c){
-        income_type_list = c;
-    }
-
-    public void obtainExpensesTypeData(ArrayList<String> c){
-        expenses_type_list = c;
-    }
-
     public ArrayList<Purse> getPoolData(){
         return pool;
     }
 
-    public ArrayList<String> getIncomeTypeList(){
-        return  income_type_list;
+    public void storeTypeData(ArrayList<String> e){
+        type_list = e;
     }
 
-    public ArrayList<String> getExpensesTypeList(){
-        return expenses_type_list;
+    public ArrayList<String> getTypeDataList(){
+        return type_list;
     }
+
+
+
+    public ArrayList<Float> getManagedList(){
+
+        float [] temp  = new float[type_list.size()];
+
+        for(Purse p : pool){
+            for(int i = 0; i < type_list.size() ; i++){
+                if(p.getType().equals(type_list.get(i))){
+                    temp[i] += p.getValue();
+                }
+            }
+        }
+
+        ArrayList<Float> values = new ArrayList<Float>();
+        for(float c : temp){
+            values.add(c);
+        }
+
+        return  values;
+
+    }
+
+
 
 
 }

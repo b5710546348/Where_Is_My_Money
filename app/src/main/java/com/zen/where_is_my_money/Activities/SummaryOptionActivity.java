@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,8 +20,11 @@ import com.zen.where_is_my_money.Models.Storage;
 import com.zen.where_is_my_money.R;
 import com.zen.where_is_my_money.Utility.Mediator;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class SummaryOptionActivity extends AppCompatActivity {
 
@@ -58,6 +62,10 @@ public class SummaryOptionActivity extends AppCompatActivity {
 
         //TextView
         selected_date_text = (TextView)findViewById(R.id.selected_date_text);
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        String requiredDate = df.format(new Date()).toString();
+        selected_date_text.setText(requiredDate);
+
 
         //Radio group
         categories = (RadioGroup)findViewById(R.id.catagories_summary_radioGroup);
@@ -71,17 +79,20 @@ public class SummaryOptionActivity extends AppCompatActivity {
                 int select_catagories_id = categories.getCheckedRadioButtonId();
                 category = (RadioButton)findViewById(select_catagories_id);
 
-                if(category != null && !selected_date_text.equals("DATE")){
-                    String date = selected_date_text.toString();
+                if(category != null && selected_date_text.getText().toString() != null){
+                    String date = selected_date_text.getText().toString();
+
+                    Log.e("Date : "  , date);
+
 
                     if(category.getText().toString().equals("Income")){
-                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Income" , date));
+                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Income", date));
 
                         Intent intent = new Intent(SummaryOptionActivity.this , GraphActivity.class);
                         startActivity(intent);
                     }
                     else if(category.getText().toString().equals("Expenses")){
-                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Expenses" , date));
+                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Expenses", date));
 
                         Intent intent = new Intent(SummaryOptionActivity.this , GraphActivity.class);
                         startActivity(intent);
@@ -108,12 +119,14 @@ public class SummaryOptionActivity extends AppCompatActivity {
 
                     if(category.getText().toString().equals("Income")){
                         Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Income" , date));
+                        Mediator.getInstance().storeTypeData(Storage.getInstance().getIncomeTypeList());
 
                         Intent intent = new Intent(SummaryOptionActivity.this , GraphActivity.class);
                         startActivity(intent);
                     }
                     else if(category.getText().toString().equals("Expenses")){
-                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Expenses" , date));
+                        Mediator.getInstance().storeTemporaryData(Storage.getInstance().getListBySpecific("Expenses", date));
+                        Mediator.getInstance().storeTypeData(Storage.getInstance().getExpensesTypeList());
 
                         Intent intent = new Intent(SummaryOptionActivity.this , GraphActivity.class);
                         startActivity(intent);
@@ -151,6 +164,7 @@ public class SummaryOptionActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener dpickerListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
             year_x = year;
             month_x = monthOfYear + 1;
             day_x = dayOfMonth;
@@ -160,8 +174,14 @@ public class SummaryOptionActivity extends AppCompatActivity {
             if(day_x < 10){
                 day = "0" + day_x;
             }
+            else{
+                day = day_x+"";
+            }
             if(month_x < 10){
                 month = "0" + month_x;
+            }
+            else{
+                month = month_x+"";
             }
 
             selected_date_text.setText(year_x + "/" + month + "/" + day);

@@ -18,17 +18,14 @@ import com.zen.where_is_my_money.Models.Storage;
 import com.zen.where_is_my_money.R;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
-public class NewDataActivity extends AppCompatActivity{
+public class NewDataActivity extends AppCompatActivity  {
 
     private EditText value_text;
     private Spinner choice;
     private Button save,cancel;
+    //private List<String> choice_list = new ArrayList<String>();
     private RadioGroup catagories_selection;
     private RadioButton category;
     private String type;
@@ -50,20 +47,15 @@ public class NewDataActivity extends AppCompatActivity{
 
         //radio_group
         catagories_selection = (RadioGroup)findViewById(R.id.catagories_summary_radioGroup);
-        int select_categories_id = catagories_selection.getCheckedRadioButtonId();
-        category = (RadioButton)findViewById(select_categories_id);
+
 
         //spinner
-        choice = (Spinner) findViewById(R.id.type_selection_box);
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
+                choice = (Spinner) findViewById(R.id.type_selection_box);
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
                         Storage.getInstance().getExpensesTypeList());
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        choice.setAdapter(dataAdapter);
-        dataAdapter.notifyDataSetChanged();
-
-
-
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                choice.setAdapter(dataAdapter);
 
 
 
@@ -74,6 +66,8 @@ public class NewDataActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
+                int select_categories_id = catagories_selection.getCheckedRadioButtonId();
+                category = (RadioButton)findViewById(select_categories_id);
                 type = choice.getSelectedItem().toString();
 
 
@@ -103,13 +97,14 @@ public class NewDataActivity extends AppCompatActivity{
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NewDataActivity.this, MainPageActivity.class);
+                Intent intent = new Intent(NewDataActivity.this , MainPageActivity.class);
                 startActivity(intent);
             }
         });
 
 
     }
+
 
 
 

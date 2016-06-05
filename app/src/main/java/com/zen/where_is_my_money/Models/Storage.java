@@ -17,8 +17,8 @@ public class Storage {
     private static Storage instance;
     private ArrayList<Purse> purseList;
     private ArrayList<Purse> temp;
-    private List<String> income_type;
-    private List<String> expenses_type;
+    private ArrayList<String> income_type;
+    private ArrayList<String> expenses_type;
 
     private Storage(){
         temp = new ArrayList<Purse>();
@@ -39,11 +39,11 @@ public class Storage {
         return  purseList;
     }
 
-    public List<String> getIncomeTypeList(){
+    public ArrayList<String> getIncomeTypeList(){
         return income_type;
     }
 
-    public List<String> getExpensesTypeList(){
+    public ArrayList<String> getExpensesTypeList(){
         return expenses_type;
     }
 

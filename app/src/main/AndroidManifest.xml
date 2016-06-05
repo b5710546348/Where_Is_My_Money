@@ -18,7 +18,8 @@
         <activity android:name=".Activities.NewDataActivity" />
         <activity android:name=".Activities.EditActivity" />
         <activity android:name=".Activities.GraphActivity" />
-        <activity android:name=".Activities.SummaryOptionActivity"></activity>
+        <activity android:name=".Activities.SummaryOptionActivity" />
+        <activity android:name=".Activities.EditDataActivity"></activity>
     </application>
 
 </manifest>
